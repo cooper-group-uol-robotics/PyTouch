@@ -6,8 +6,10 @@ from torchvision import models
 
 class TouchDetectModelDefaults:
     SCALES = [64, 64]
-    MEANS = [0.485, 0.456, 0.406]
-    STDS = [0.229, 0.224, 0.225]
+    # MEANS = [0.485, 0.456, 0.406]
+    # STDS = [0.229, 0.224, 0.225]
+    MEANS = [0.396320, 0.402918, 0.383626]
+    STDS = [0.158946, 0.087167, 0.101796]
     CLASSES = 2
 
 

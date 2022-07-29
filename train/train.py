@@ -15,7 +15,7 @@ from pytorch_lightning.loggers import TensorBoardLogger
 _log = logging.getLogger(__name__)
 
 
-@hydra.main(config_path="config", config_name="train")
+@hydra.main(config_path="config/task", config_name="touch_detect")
 def main(cfg):
     _log.info("PyTouch training initialized with the following configuration...")
     _log.info(OmegaConf.to_yaml(cfg))
@@ -54,7 +54,7 @@ def main(cfg):
         logger=logger,
         max_epochs=cfg.training.n_epochs,
         callbacks=[checkpoint_callback],
-        gpus=1,
+        # gpus=1,
         default_root_dir=".",
     )
 

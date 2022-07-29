@@ -17,6 +17,7 @@ class TouchDetectionModel(LightningModule):
 
         for param in self.model.parameters():
             param.requires_grad = False
+            # param.requires_grad = not cfg.model.pre_trained  # was false
 
         self.model.fc = nn.Linear(self.model.fc.in_features, cfg.model.n_classes)
 

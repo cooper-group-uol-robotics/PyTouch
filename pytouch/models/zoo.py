@@ -86,7 +86,7 @@ class PyTouchZoo:
 
     def load_model_from_zoo(self, model_name, sensor, version="pth"):
         model_url = self._get_zoo_model_url(model_name, sensor.zoo_name(), version)
-        model_state_dict = hub.load_state_dict_from_url(model_url)
+        model_state_dict = hub.load_state_dict_from_url(model_url, map_location=torch.device('cpu'))
         model_state_dict = model_utils.convert_state_dict_if_from_pl(model_state_dict)
         return model_state_dict
 

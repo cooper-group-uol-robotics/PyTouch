@@ -6,7 +6,7 @@ import numpy as np
 from pytorch_lightning import LightningDataModule
 from torch.utils.data import DataLoader, Subset
 
-from pytouch.datasets import DigitFolder
+from pytouch.datasets.digit import DigitFolder
 from pytouch.tasks import TouchDetect
 
 _log = logging.getLogger(__name__)
