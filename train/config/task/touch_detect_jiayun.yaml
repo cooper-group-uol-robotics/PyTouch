@@ -1,0 +1,41 @@
+# @package _global_
+experiment: touch_detect_exp
+model:
+  _target_: models.touch_detect.TouchDetectionModel
+  pre_trained: True
+  n_classes: 2
+data:
+  _target_: datamodules.touch_detect.TouchDetectDataModule
+  path: "/home/acldifstudent2/Code/Jiayun/PyTouch/img_anothersensor/train"
+  exclude: []
+  transform:
+    scales: [224, 224]
+    mean: [0.396320, 0.402918, 0.383626]
+    std: [0.158946, 0.087167, 0.101796]
+optimizer:
+  type: "Adam"
+  lr: 0.00847
+  lr_patience: 30
+  weight_decay: 1.0115995395401329e-08
+training:
+  seed: 42
+  batch_size: 8
+  n_threads: 12
+  #gpu_ids: 1
+  n_epochs: 50
+  train_val_ratio: 0.85
+  pin_memory: 1
+checkpoints:
+  path: "./checkpoints/"
+  last_epoch: "last_epoch.chkpt"
+  temp_epoch: "last_epoch.chkpt.tmp"
+  monitor: "val_loss"
+  mode: "min"
+  save_top_k: 10
+  restore_best: 1
+  csv_file_name: "training_log.csv"
+  save_weights_only: True
+general:
+  verbose: True
+  tb_log_path: "./tb_logs/"
+onnx_export: False
